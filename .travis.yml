@@ -7,7 +7,7 @@ env:
 
 script:
   - docker build --pull --tag "$IMAGE_NAME" .
-  - docker run "$IMAGE_NAME" pip list | grep splinter 
+  - docker run --entrypoint /usr/bin/pip "$IMAGE_NAME" list | grep splinter 
 
 after_script:
   - docker images
