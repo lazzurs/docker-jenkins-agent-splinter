@@ -38,7 +38,7 @@ RUN GK_VERSION=$(if [ ${GECKODRIVER_VERSION:-latest} = "latest" ]; then echo "0.
 
 # Update apt repos and install pip
 RUN apt update && apt upgrade -y
-RUN apt install python-pip -y
+RUN apt install python3-pip -y
 
 # Install splinter
 RUN pip install splinter
