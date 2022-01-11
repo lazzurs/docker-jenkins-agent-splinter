@@ -10,7 +10,7 @@ USER root
 ARG FIREFOX_VERSION=latest
 RUN FIREFOX_DOWNLOAD_URL=$(if [ $FIREFOX_VERSION = "latest" ] || [ $FIREFOX_VERSION = "nightly-latest" ] || [ $FIREFOX_VERSION = "devedition-latest" ]; then echo "https://download.mozilla.org/?product=firefox-$FIREFOX_VERSION-ssl&os=linux64&lang=en-US"; else echo "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$FIREFOX_VERSION/linux-x86_64/en-US/firefox-$FIREFOX_VERSION.tar.bz2"; fi) \
   && apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install curl firefox-esr libavcodec-extra \
+  && apt-get -qqy --no-install-recommends install curl bzip2 firefox-esr libavcodec-extra \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && curl -o /tmp/firefox.tar.bz2 $FIREFOX_DOWNLOAD_URL \
   && apt-get -y purge firefox-esr \
